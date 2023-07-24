@@ -21,7 +21,7 @@ public class Test {
    
 	int counter=1;
 	int counterSix=0;
-	boolean flag=false;//Large Straight ve yahtzee aynı andaysa kontrolü sağlar
+	boolean flag=false;//Large Straight ve yahtzee aynÃ½ andaysa kontrolÃ¼ saÃ°lar.
 	
 	while(counter<7) {
 		if(sll.search(counter)) {
@@ -57,14 +57,14 @@ public class Test {
 		Player player1=new Player(name1,0);
 		Player player2=	new Player(name2,0);
 		
-		SingleLinkedList sll1 = new SingleLinkedList();//Player1 in zar değerlerini tutar
-		SingleLinkedList sll2 = new SingleLinkedList();//Player2 nin zar değerlerini tutar
-		SingleLinkedList sllName = new SingleLinkedList();//isimler sıralı tutulur
-		SingleLinkedList sllScore = new SingleLinkedList();//score lar sıralı tutulur.
-		SingleLinkedList sllPlayer = new SingleLinkedList();//playerlar sırasız tutulur
-		SingleLinkedList sllPlayer2 = new SingleLinkedList();//playerlar sırasız tutulur
-		SingleLinkedList sllSortedNameAndScore = new SingleLinkedList();//Sıralı olarak isim ve score ları tutar
-		SingleLinkedList sllSorted = new SingleLinkedList();//Sıralı olarak score ları tutar
+		SingleLinkedList sll1 = new SingleLinkedList();//Player1 in zar deÃ°erlerini tutar
+		SingleLinkedList sll2 = new SingleLinkedList();//Player2 nin zar deÃ°erlerini tutar
+		SingleLinkedList sllName = new SingleLinkedList();//isimler sÃ½ralÃ½ tutulur
+		SingleLinkedList sllScore = new SingleLinkedList();//score lar sÃ½ralÃ½ tutulur.
+		SingleLinkedList sllPlayer = new SingleLinkedList();//playerlar sÃ½rasÃ½z tutulur
+		SingleLinkedList sllPlayer2 = new SingleLinkedList();//playerlar sÃ½rasÃ½z tutulur
+		SingleLinkedList sllSortedNameAndScore = new SingleLinkedList();//SÃ½ralÃ½ olarak isim ve score larÃ½ tutar
+		SingleLinkedList sllSorted = new SingleLinkedList();//SÃ½ralÃ½ olarak score larÃ½ tutar
 		
 		int turnCounter=1;
 		
@@ -75,7 +75,7 @@ public class Test {
 		    turnCounter++;
 		    System.out.println();
       }
-    	//winner ın belirlenmesi durumu
+    	//winner Ã½n belirlenmesi durumu
         System.out.println("\nGame is over.\n");
         Object winnerName=" ";
         Object winnerScore=0;
@@ -94,8 +94,8 @@ public class Test {
         }
         
         //ilk olarak kazanan text e eklenir.
-        //textteki tüm playerlar okunup list e eklenir
-        //textin tamamı silinip  ilk 10 yazdırılır.
+        //textteki tÃ¼m playerlar okunup list e eklenir
+        //textin tamamÃ½ silinip  ilk 10 yazdÃ½rÃ½lÃ½r.
         
         FileWriter fileWriter = new FileWriter("HighScoreTable.txt" , true);
         fileWriter.write((String)winnerName);
@@ -113,8 +113,8 @@ public class Test {
               }
               else {
             	  Player temp= new Player(name,Integer.parseInt(lineReader.nextLine()));
-            	  sllSorted.sortedAdd(temp);//sortedAdd methodu scoreları sıralı olarak sllSorted a ekler
-            	  sllPlayer.add(temp);//içinde playerlar name ve score olarak obje şeklinde
+            	  sllSorted.sortedAdd(temp);//sortedAdd methodu scorelarÃ½ sÃ½ralÃ½ olarak sllSorted a ekler
+            	  sllPlayer.add(temp);//iÃ§inde playerlar name ve score olarak obje Ã¾eklinde
             	  sllPlayer2.add(temp);
               }
         	lineCounter++;
@@ -122,20 +122,20 @@ public class Test {
         lineReader.close();
         
        
-        //isimler ve skorların birlikte sortlanmış hali sllSortedNameAndScore a ekleniyor.
-        //en baştaki skora eşit isimler sırayla bulunup sllPlayer dan silinir.İsim ve skor olarak sllSortedNameAndScore e eklenir
-        //sonra her döngüde en  baştaki skor sllSorted tan silinir
+        //isimler ve skorlarÃ½n birlikte sortlanmÃ½Ã¾ hali sllSortedNameAndScore a ekleniyor.
+        //en baÃ¾taki skora eÃ¾it isimler sÃ½rayla bulunup sllPlayer dan silinir.Ãsim ve skor olarak sllSortedNameAndScore e eklenir
+        //sonra her dÃ¶ngÃ¼de en  baÃ¾taki skor sllSorted tan silinir
         while(sllSorted.size()>0) {
         	sllSortedNameAndScore.add(sllPlayer.nameScore((int)sllSorted.head.getData(),"nameAndScore"));
-        	sllName.add(sllPlayer2.nameScore((int)sllSorted.head.getData(),"name"));//highScoreTable daki sıralı isimler
-      	    sllScore.add((int)sllSorted.head.getData());//highScoreTable daki sıralı score lar
+        	sllName.add(sllPlayer2.nameScore((int)sllSorted.head.getData(),"name"));//highScoreTable daki sÃ½ralÃ½ isimler
+      	    sllScore.add((int)sllSorted.head.getData());//highScoreTable daki sÃ½ralÃ½ score lar
         	sllSorted.remove(sllSorted.head.data);
        }
        int counter=0;
-       FileWriter fileWriter2 = new FileWriter("HighScoreTable.txt" ,false);//text in içindekiler silindi
+       FileWriter fileWriter2 = new FileWriter("HighScoreTable.txt" ,false);//text in iÃ§indekiler silindi
        fileWriter2.close();
        FileWriter fileWriter3 = new FileWriter("HighScoreTable.txt" ,true);
-       while(sllName.size()>1 && counter<10) {//sıralı olarak ilk 10 player isim ve skor şeklinde eklenir.
+       while(sllName.size()>1 && counter<10) {//sÃ½ralÃ½ olarak ilk 10 player isim ve skor Ã¾eklinde eklenir.
     	   fileWriter3.write(sllName.head.getData()+"\n") ;
     	   sllName.remove(sllName.head.getData());
            fileWriter3.write(sllScore.head.getData()+"\n") ;
